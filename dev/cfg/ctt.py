@@ -1,1 +1,3 @@
-#ctt.py
+# ctt.py
+
+CELLAR_CONNECTION = ""
