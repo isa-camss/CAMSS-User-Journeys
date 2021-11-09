@@ -1,7 +1,6 @@
 from flask import Flask
 from apis.camss_assessments import api
 
-
 """LOG_FILE = './log/govs.log'
 io.make_file_dirs(LOG_FILE)
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s',
