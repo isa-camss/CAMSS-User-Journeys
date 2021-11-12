@@ -1,8 +1,9 @@
 import unittest
 import sys
 import logging
+import json
 import cfg.ctt as ctt
-
+import com.assessments as ass
 
 # LOG = '../log/resource_relations_test.log'
 # io.drop_file(LOG)
@@ -21,7 +22,10 @@ class TestAssessments(unittest.TestCase):
         return
 
     @staticmethod
-    def test_001_connect_cellar_test(self):
+    def test_001_connect_cellar_test():
+        assessments = ass.Assessments(url_connection=ctt.CELLAR_CONNECTION)
+        query_results = assessments.get_assessment()
+        print(query_results)
         return
 
 
