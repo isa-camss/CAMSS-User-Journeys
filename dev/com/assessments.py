@@ -1,5 +1,4 @@
 from SPARQLWrapper import SPARQLWrapper, JSON, CSV
-from pprint import pprint
 import cfg.sparql as sparql
 
 
@@ -18,7 +17,5 @@ class Assessments:
         cellar_connection.setReturnFormat(JSON)
         qres = cellar_connection.query().convert()
         return qres
-
-        # pprint(qres)
 
         # return {"msg": "success"}, 201
