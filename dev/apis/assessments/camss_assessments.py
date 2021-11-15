@@ -1,5 +1,5 @@
 from flask_restx import Namespace, Resource
-from com.assessments import Assessments
+from com.assessments.assessments import Assessments
 import cfg.ctt as ctt
 
 api = Namespace("assessments", description="CAMSS Assessments")

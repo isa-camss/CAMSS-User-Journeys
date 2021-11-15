@@ -16,6 +16,5 @@ class Assessments:
         # Format results
         cellar_connection.setReturnFormat(JSON)
         qres = cellar_connection.query().convert()
-        return qres
 
-        # return {"msg": "success"}, 201
+        return qres, 201

@@ -1,9 +1,6 @@
 import unittest
-import sys
-import logging
-import json
 import cfg.ctt as ctt
-import com.assessments as ass
+import com.assessments.assessments as ass
 
 # LOG = '../log/resource_relations_test.log'
 # io.drop_file(LOG)
