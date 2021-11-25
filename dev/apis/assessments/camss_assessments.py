@@ -40,7 +40,7 @@ class ApiAssessments(Resource):
 
         results = {'Assessments': assessments_list, 'Scenario': scenario_list}
         df_assessments = pd.DataFrame(results, columns=['Assessments', 'Scenario'])
-    
+
         print(results)
 
         return results, 201

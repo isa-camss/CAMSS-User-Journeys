@@ -1,5 +1,4 @@
-from SPARQLWrapper import SPARQLWrapper, JSON, CSV
-import cfg.sparql as sparql
+from SPARQLWrapper import SPARQLWrapper, JSON
 
 
 class Assessments:
