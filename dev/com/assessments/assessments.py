@@ -12,6 +12,7 @@ class Assessments:
 
         # Execute query
         cellar_connection.setQuery(query)
+        
         # Format results
         cellar_connection.setReturnFormat(JSON)
         qres = cellar_connection.query().convert()
