@@ -28,9 +28,10 @@ class ApiAssessments(Resource):
         # io.log(f'Success: Process concluded. It took {io.now() - t0}')
         # msg['lapse'] = f'{str(io.now() - t0)})'
         results_format = msg['results']['bindings']
-        assessments_list = []
-        scenario_list = []
 
+        # assessments_list = []
+        # scenario_list = []
+        '''
         for item_list in results_format:
             assessment_value = item_list['Assessment']['value']
             assessments_list.append(assessment_value)
@@ -40,7 +41,8 @@ class ApiAssessments(Resource):
 
         results = {'Assessments': assessments_list, 'Scenario': scenario_list}
         df_assessments = pd.DataFrame(results, columns=['Assessments', 'Scenario'])
+        '''
 
-        print(results)
+        print(results_format)
 
-        return results, 201
+        return results_format, 201
