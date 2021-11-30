@@ -1,5 +1,4 @@
-from SPARQLWrapper import SPARQLWrapper, JSON, CSV
-import cfg.sparql as sparql
+from SPARQLWrapper import SPARQLWrapper, JSON
 
 
 class Assessments:
@@ -13,6 +12,7 @@ class Assessments:
 
         # Execute query
         cellar_connection.setQuery(query)
+        
         # Format results
         cellar_connection.setReturnFormat(JSON)
         qres = cellar_connection.query().convert()
