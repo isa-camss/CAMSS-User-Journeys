@@ -1,13 +1,13 @@
 USER STORY 1
-I, as a procurer, want to obtain the interoperability specifications catalog by CAMSS and their assessments so I can mention the specification in my procurement procedures.
+I, as a procurer, want to obtain the interoperability specifications catalog by CAMSS and their assessments, so I can mention the specifications I aminterested in my procurement procedure.
 
 
-UC 1 
+UC Title: Interoperability Specifications Catalog
 Actor: procurer
-flow: Obtain the list of specifications through CAMSS hub
+flow: Get the list of specifications through CAMSS hub
 alternative flow: 
-    Obtain the list of the specifications linked to the assessment
-    Obtain the assessments for one specification
+    Get the list of the specifications linked to the assessment
+    Get the assessments for one specification
     Get the CAV dataset of the assessment
     Get the CSSV dataset of the specification
 
