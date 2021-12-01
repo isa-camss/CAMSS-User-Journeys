@@ -21,28 +21,32 @@ class ApiAssessments(Resource):
         Main entry point to the API which produces all the artefacts for querying to the SPARQL end point of CELLAR
         Triplestore.
         """
-        args = assess_args.parse_args()
-        assess = Assessments(ctt.CELLAR_CONNECTION)
-        # t0 = io.now()
-        msg = assess.get_assessment(args['sparql_query'])
-        # io.log(f'Success: Process concluded. It took {io.now() - t0}')
-        # msg['lapse'] = f'{str(io.now() - t0)})'
-        results_format = msg['results']['bindings']
-        '''
-        assessments_list = []
-        scenario_list = []
-        
-        for item_list in results_format:
-            assessment_value = item_list['Assessment']['value']
-            assessments_list.append(assessment_value)
+        try:
+            args = assess_args.parse_args()
+            assess = Assessments(ctt.CELLAR_CONNECTION)
+            # t0 = io.now()
+            msg = assess.get_assessment(args['sparql_query'])
+            # io.log(f'Success: Process concluded. It took {io.now() - t0}')
+            # msg['lapse'] = f'{str(io.now() - t0)})'
+            results_format = msg['results']['bindings']
+            '''
+            assessments_list = []
+            scenario_list = []
+            
+            for item_list in results_format:
+                assessment_value = item_list['Assessment']['value']
+                assessments_list.append(assessment_value)
+    
+                scenario_value = item_list['Scenario']['value']
+                scenario_list.append(scenario_value)
+    
+            results = {'Assessments': assessments_list, 'Scenario': scenario_list}
+            df_assessments = pd.DataFrame(results, columns=['Assessments', 'Scenario'])
+            '''
+            status_code = 201
+            print(results_format)
+        except Exception as ex:
+            status_code = 555
+            results_format = {"Error executing query. Exception: ": str(ex)}
 
-            scenario_value = item_list['Scenario']['value']
-            scenario_list.append(scenario_value)
-
-        results = {'Assessments': assessments_list, 'Scenario': scenario_list}
-        df_assessments = pd.DataFrame(results, columns=['Assessments', 'Scenario'])
-        '''
-
-        print(results_format)
-
-        return results_format, 201
+        return results_format, status_code
