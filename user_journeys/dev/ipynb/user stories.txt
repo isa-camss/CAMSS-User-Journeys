@@ -1,0 +1,28 @@
+USER STORY 1
+I, as a procurer, want to obtain the interoperability specifications catalog by CAMSS and their assessments, so I can mention the specifications I aminterested in my procurement procedure.
+
+
+UC Title: Interoperability Specifications Catalog
+Actor: procurer
+flow: Get the list of specifications through CAMSS hub
+alternative flow: 
+    Get the list of the specifications linked to the assessment
+    Get the assessments for one specification
+    Get the CAV dataset of the assessment
+    Get the CSSV dataset of the specification
+
+USER STORY 2
+I, as a procurer, want to see all assessments of all specifications linked to one or more EIRA ABBs so I can recommend my team how to aproach the LOST interoperability solutions.
+
+UC 1
+Actor: procurer
+flow: given one or more ABBs get the specifications linked to that ABBs  
+alternative flow:
+    Get the assessments of each specifications.
+    Get the CAV dataset of the assessment
+    Get the CSSV dataset of the specification
+    
+    
+NICE TO HAVE
+    html view 
+    export to common formats (consult rdflib)
