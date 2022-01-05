@@ -1,9 +1,15 @@
 import cfg.sparql as sparql
 
+# API
+API_PORT = 5000
+API_DEBUG = False
+PING_ENDPOINT = f'http://localhost:{API_PORT}/assessments/ping'
+URL_MICROSERVICE = f'http://localhost:{API_PORT}/assessments/get_assessments'
+
+# CELLAR
 CELLAR_CONNECTION = "http://publications.europa.eu/webapi/rdf/sparql"
 
-URL_MICROSERVICE = 'http://localhost:5100/assessments/get_assessments'
-
+# JUPYTER NOTEBOOK
 PROCURER_USE_CASES = [
     {'name': 'UC-1',
      'title': '<strong>SPECIFICATIONS CATALOG</strong>',
