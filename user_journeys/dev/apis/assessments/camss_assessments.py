@@ -35,7 +35,15 @@ class ApiAssessments(Resource):
             args = assess_args.parse_args()
             assess = Assessments(ctt.CELLAR_CONNECTION)
             msg = assess.get_assessment(args['sparql_query'])
-            results_format = msg['results']['bindings']
+            list_response = msg['results']['bindings']
+            list_result_json = []
+
+            for element_dict in list_response:
+                dict_result = {}
+                for key, value in element_dict.items():
+                    dict_result[key] = value.get('value')
+                list_result_json.append(dict_result)
+            results_format = {'list_result': list_result_json}
             status_code = 201
         except Exception as ex:
             status_code = 555
