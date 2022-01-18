@@ -1,20 +1,35 @@
-# ctt.py
 import cfg.sparql as sparql
 
+# API
+API_PORT = 5000
+API_DEBUG = False
+PING_ENDPOINT = f'http://localhost:{API_PORT}/assessments/ping'
+URL_MICROSERVICE = f'http://localhost:{API_PORT}/assessments/get_assessments'
+
+# CELLAR
 CELLAR_CONNECTION = "http://publications.europa.eu/webapi/rdf/sparql"
 
-URL_MICROSERVICE = 'http://localhost:5100/assessments/get_assessments'
+# JUPYTER NOTEBOOK
+PROCURER_USE_CASES = [
+    {'name': 'UC-1',
+     'title': '<strong>SPECIFICATIONS CATALOG</strong>',
+     'query_value': sparql.QUERY_ALL_SPECIFICATIONS_ASSESSED,
+     'description': '''This SPARQL query returns the interoperability specifications catalog by CAMSS and their 
+      assessments. You can also modify the query if you need to complement it.<br>Press the Run button to execute it.'''},
+    {'name': "Custom queries",
+     'title': '<strong>CUSTOM QUERIES</strong>',
+     'query_value': '',
+     'description': '''In this section you can develop a SPARQL query of your own.<br>Type the query in the textarea and press the Run button to
+     execute it.'''}]
 
-TAB_VALUES = [
-    {'name': "Custom queries", 
-     'query_value': '', 
-     'description': '''In this section you can make a SPARQL query of whatever you want to Cellar Triplestore.br &nbsp; 
-      Type the query in the textarea and press the button to execute it.'''},
-    {'name': 'UC1: Specs Catalog', 
-     'query_value': sparql.QUERY_ALL_SPECIFICATIONS_ASSESSED, 
-     'description':'''This SPARQL query returns the interoperability specifications catalog by CAMSS and their 
-      assessments. Press the Run button to execute it. You can also modify the query if you need to complement it''' },
-    {'name': 'UC2: EIRA ABBs', 
-     'query_value': sparql.QUERY_SPECIFICATIONS_ASSESSED_ASSOCIATED_TO_EIRA_ABBS, 
-     'description': '''This SPARQL query, given one or more ABBs get the specifications linked to that ABBs. Press the 
-      Run button to execute it. You can also modify the query if you need to complement it'''}]
+SOFTWARE_USE_CASES = [
+    {'name': 'UC-1',
+     'title': '<strong>SPECIFICATIONS ASSOCIATED TO EIRA ABBs</strong>',
+     'query_value': sparql.QUERY_SPECIFICATIONS_ASSESSED_ASSOCIATED_TO_EIRA_ABBS,
+     'description': '''This SPARQL query returns the interoperability specifications assessed by CAMSS and associated to EIRA ABBs.
+     You can also modify the query if you need to complement it.<br>Press the Run button to execute it.'''},
+    {'name': "Custom queries",
+     'title': '<strong>CUSTOM QUERIES</strong>',
+     'query_value': '',
+     'description': '''In this section you can develop a SPARQL query of your own.<br>Type the query in the textarea and press the Run button to
+     execute it.'''}]
