@@ -15,15 +15,15 @@ QUERY_ALL_SPECIFICATIONS_ASSESSED = '''
     prefix elis: <http://data.europa.eu/2sa/elis#>
     prefix owl: <http://www.w3.org/2002/07/owl#>
 
-    select distinct ?TitleSpecification ?AssessmentTitle where {
+    select distinct ?TitleSpecification ?AssessmentTitle ?AssessmentDistribution where {
 
         ?CatalogRecords rdf:type dcat:CatalogRecord;
         foaf:primaryTopic ?PrimaryTopic;
         dct:title ?TitleSpecification.
         ?PrimaryTopic dct:relation ?relations.
         ?relations rdf:type cav:Assessment;
-        dct:title ?AssessmentTitle
-
+        dct:title ?AssessmentTitle.
+        ?relations dcat:landingPage ?AssessmentDistribution.
     } 
     
     LIMIT 1000
