@@ -15,15 +15,15 @@ QUERY_ALL_SPECIFICATIONS_ASSESSED = '''
     prefix elis: <http://data.europa.eu/2sa/elis#>
     prefix owl: <http://www.w3.org/2002/07/owl#>
 
-    select distinct ?TitleSpecification ?AssessmentTitle ?AssessmentDistribution where {
+    select distinct ?Specification ?Assessment ?AssessmentLink where {
 
         ?CatalogRecords rdf:type dcat:CatalogRecord;
         foaf:primaryTopic ?PrimaryTopic;
-        dct:title ?TitleSpecification.
+        dct:title ?Specification.
         ?PrimaryTopic dct:relation ?relations.
         ?relations rdf:type cav:Assessment;
-        dct:title ?AssessmentTitle.
-        ?relations dcat:landingPage ?AssessmentDistribution.
+        dct:title ?Assessment.
+        ?relations dcat:landingPage ?AssessmentLink.
     } 
     
     LIMIT 1000
@@ -46,20 +46,20 @@ QUERY_SPECIFICATIONS_ASSESSED_ASSOCIATED_TO_EIRA_ABBS = '''
     prefix elis: <http://data.europa.eu/2sa/elis#>
     prefix owl: <http://www.w3.org/2002/07/owl#>
 
-    select distinct ?PrimaryTopic ?relation2 ?relation where {
+    select distinct ?Specification ?ABBs ?Assessment where {
 
-    ?PrimaryTopic dct:relation ?relation2.{
+    ?PrimaryTopic dct:relation ?ABBs.{
         
-        SELECT ?PrimaryTopic ?relation {
+        SELECT ?Specification ?Assessment {
         ?CatalogRecords rdf:type dcat:CatalogRecord;
         foaf:primaryTopic ?PrimaryTopic.
         ?PrimaryTopic dct:title ?Specification.
-        ?PrimaryTopic dct:relation ?relation.
+        ?PrimaryTopic dct:relation ?Assessment.
 
-        FILTER( contains(STR(?relation), "http://data.europa.eu/2sa/assessments/") )
+        FILTER( contains(STR(?Assessment), "http://data.europa.eu/2sa/assessments/") )
         }
     }
-    FILTER( contains(STR(?relation2), "http://data.europa.eu/dr8#") )
+    FILTER( contains(STR(?ABBs), "http://data.europa.eu/dr8#") )
     }
     ORDER BY ?PrimaryTopic
     
