@@ -46,15 +46,17 @@ QUERY_SPECIFICATIONS_ASSESSED_ASSOCIATED_TO_EIRA_ABBS = '''
     prefix elis: <http://data.europa.eu/2sa/elis#>
     prefix owl: <http://www.w3.org/2002/07/owl#>
 
-    select distinct ?Specification ?ABBs ?Assessment where {
+    select distinct ?Specification ?ABBs ?AssessmentLink where {
 
     ?PrimaryTopic dct:relation ?ABBs.{
         
-        SELECT ?Specification ?Assessment {
+        SELECT ?Specification ?AssessmentLink {
         ?CatalogRecords rdf:type dcat:CatalogRecord;
         foaf:primaryTopic ?PrimaryTopic.
         ?PrimaryTopic dct:title ?Specification.
         ?PrimaryTopic dct:relation ?Assessment.
+        ?Assessment rdf:type cav:Assessment;
+        dcat:landingPage ?AssessmentLink
 
         FILTER( contains(STR(?Assessment), "http://data.europa.eu/2sa/assessments/") )
         }
