@@ -33,7 +33,7 @@ KEY_DOC = 'documentation'
 KEY_CELLAR = 'cellar'
 
 # TITLES
-TITLE_CELLAR = 'Cellar'
+TITLE_CELLAR = 'CELLAR'
 
 # DESCRIPTIONS
 DESCRIPTION_TEMPLATE_1 = 'API namespace for querying CELLAR Triplestore'
@@ -50,7 +50,7 @@ DOCUMENTATION_TEMPLATE_1 = 'Class to execute the fibuzz class that returns "Fizz
                            'divisible by 3 and 5.Used to check that the services are up and running. '
 
 # ENDPOINTS
-END_POINT_TEMPLATE_1 = "/cellar"
+END_POINT_TEMPLATE_1 = "/query"
 
 # KEY ARGUMENTS
 KEY_NAME_QUERY = 'query'
