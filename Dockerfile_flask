@@ -1,16 +1,13 @@
 # Importing and using python slim image version
-FROM python:3.9.12-slim
+FROM python:3.8.13-slim
 
 # Using the default python image path
 WORKDIR /usr/src/app
 
 # Copy and install the flask requirements
-COPY ./requirements.txt .
+COPY ./camss-kd-flask-app/requirements.txt .
 RUN pip install --no-cache-dir -r ./requirements.txt
-
-# Exposes the default flask port
-EXPOSE 5000
 
 # Copy and execute the whole flask app
 COPY . .
-CMD ["python", "./src/dev/wsgi.py"]
+CMD gunicorn --bind=0.0.0.0:5000 --timeout 18000 --workers=2 --chdir ./camss-kd-flask-app/src/dev wsgi:app

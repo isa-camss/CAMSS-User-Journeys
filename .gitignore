@@ -6,7 +6,6 @@ __pycache__/
 # C extensions
 *.so
 
-
 # Distribution / packaging
 .Python
 build/
@@ -121,6 +120,9 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# LOG
+.log
+
 # mypy
 .mypy_cache/
 .dmypy.json
@@ -134,3 +136,19 @@ pyre/
 .idea
 idea/
 /idea
+
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### Backup ###
+*.bak
+*.gho
+*.ori
+*.orig
+*.tmp
+
+# Allowed Exceptions
+!requirements.txt

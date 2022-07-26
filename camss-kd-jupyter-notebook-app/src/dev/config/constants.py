@@ -1,4 +1,5 @@
 import config.sparql as sparql
+import os
 
 # -------------------------------------------- PROJECT CONFIGURATION -------------------------------------------------
 PROJECT_NAME = 'camss-knowledge-discovery'
@@ -9,10 +10,11 @@ API_NAME = 'api-cellar-queries'
 API_VERSION = 'v1'
 API_TITLE = 'CELLAR'
 END_POINT_NAME = 'query'
-API_PORT = 5000
-API_DEBUG = False
-END_POINT_MICROSERVICE = f'http://localhost:{API_PORT}/{API_NAME}/{API_VERSION}/{API_TITLE}/{END_POINT_NAME}'
-URL_MICROSERVICE = 'http://localhost:5000/api-cellar-queries/v1/CELLAR/query'
+
+# -------------------------------------------- DOCKER CONFIGURATION -------------------------------------------------
+
+FLASK_HOST_PORT = os.environ.get('FLASK_HOST_PORT') if os.environ.get('FLASK_HOST_PORT') else 'https://localhost:5000'
+URL_MICROSERVICE = f'{FLASK_HOST_PORT}/api-cellar-queries/v1/CELLAR/query'
 
 # ---------------------------------------------- CELLAR CONNECTION -------------------------------------------------
 CELLAR_CONNECTION = 'http://publications.europa.eu/webapi/rdf/sparql'
