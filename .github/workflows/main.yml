@@ -35,7 +35,7 @@ jobs:
           dockerfile_directory: ./
 
           # Dockerfile name.
-          dockerfile_name: docker-compose
+          dockerfile_name: docker-compose.yml
 
           # Additional options of docker build command.
           docker_options: "--no-cache"
