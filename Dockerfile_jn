@@ -1,0 +1,9 @@
+# Copyright (c) Jupyter Development Team.
+# Distributed under the terms of the Modified BSD License.
+ARG OWNER=jupyter
+ARG BASE_CONTAINER=$OWNER/base-notebook:python-3.8.5
+FROM $BASE_CONTAINER
+
+COPY ./camss-kd-jupyter-notebook-app/requirements.txt .
+
+RUN pip install --no-cache-dir -r ./requirements.txt

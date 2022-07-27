@@ -137,18 +137,19 @@ pyre/
 idea/
 /idea
 
-.vscode/
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
 ### Backup ###
 *.bak
 *.gho
 *.ori
 *.orig
 *.tmp
+
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
 
 # Allowed Exceptions
 !requirements.txt

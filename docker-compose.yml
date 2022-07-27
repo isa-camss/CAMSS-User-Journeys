@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  jupyter-notebook:
+    build: 
+      context: .
+      dockerfile: Dockerfile_jn
+    container_name: camss-kd-jupyter-notebook
+    image: camss-kd-jupyter-notebook
+    ports:
+      - "8888:8888"
+    networks:
+      - camss-net
+    volumes:
+      - ./camss-kd-jupyter-notebook-app/src/dev:/home/jovyan/work
+    restart: 
+      always
+    environment:
+      - JUPYTER_TOKEN=hi
+      - ENV_JUPYTER_ENABLE_LAB=no
+      - FLASK_HOST_PORT=http://camss-kd-flask:5000
+  flask-api:
+    build: 
+      context: .
+      dockerfile: Dockerfile_flask
+    container_name: camss-kd-flask
+    image: camss-kd-flask
+    ports:
+      - "5000:5000"
+    networks:
+      - camss-net
+    restart: 
+      always
+      
+networks:
+  camss-net:
