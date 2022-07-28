@@ -8,6 +8,9 @@ WORKDIR /usr/src/app
 COPY ./camss-kd-flask-app/requirements.txt .
 RUN pip install --no-cache-dir -r ./requirements.txt
 
+# Exposes the default flask port
+EXPOSE 5000
+
 # Copy and execute the whole flask app
 COPY . .
 CMD gunicorn --bind=0.0.0.0:5000 --timeout 18000 --workers=2 --chdir ./camss-kd-flask-app/src/dev wsgi:app

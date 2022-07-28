@@ -1,5 +1,5 @@
 # Workflow name.
-name: Deploy to heroku docker-compose image.
+name: Deploy to heroku
 
 # Run workflow on every push to main branch.
 on:
@@ -15,9 +15,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-### ⬇ STRUCTURAL PART ⬇ ###
       - name: Build, Push and Release a docker-compose container to Heroku. # Your custom step name
-        uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
+        uses: isa-camss/CAMSS-User-Journeys@v1  # GitHub action name (leave it as it is).
         with:
           # Below variables for Heroku app.
 
@@ -25,7 +24,6 @@ jobs:
           email: ${{ secrets.HEROKU_EMAIL }}
           
           # Heroku API key associated with provided user's email.
-          # Api Key is available under Heroku account settings.
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           
           # Name of the heroku application to which the build is to be sent.
@@ -43,4 +41,3 @@ jobs:
           # Select the process type for which you want the docker container to be uploaded.
           # By default, this argument is set to "web".
           process_type: web          
-### ⬆ STRUCTURAL PART ⬆ ###
