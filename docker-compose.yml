@@ -4,7 +4,7 @@ services:
   jupyter-notebook:
     build: 
       context: .
-      dockerfile: Dockerfile_jn
+      dockerfile: Dockerfile.jupyter
     container_name: camss-kd-jupyter-notebook
     image: camss-kd-jupyter-notebook
     ports:
@@ -22,7 +22,7 @@ services:
   flask-api:
     build: 
       context: .
-      dockerfile: Dockerfile_flask
+      dockerfile: Dockerfile.flask
     container_name: camss-kd-flask
     image: camss-kd-flask
     ports:
