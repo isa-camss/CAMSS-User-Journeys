@@ -4,7 +4,7 @@ ARG OWNER=jupyter
 ARG BASE_CONTAINER=$OWNER/base-notebook:python-3.8.5
 ARG JUPYTER_TOKEN=hi
 ARG ENV_JUPYTER_ENABLE_LAB=no
-ARG FLASK_HOST_PORT=http://camss-kd-flask:5000
+ARG FLASK_HOST_PORT=http://localhost:5000
 
 FROM $BASE_CONTAINER
 
@@ -12,5 +12,5 @@ COPY ./camss-kd-jupyter-notebook-app/requirements.txt .
 
 RUN pip install --no-cache-dir -r ./requirements.txt
 
-# Exposes the default flask port
+# Exposes the default Jupyter Notebook port
 EXPOSE 8888
