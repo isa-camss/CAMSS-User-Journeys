@@ -1,4 +1,4 @@
 build:
   docker:
     web: Dockerfile.jupyter
-    worker: Dockerfile.flask
+    # worker: Dockerfile.flask

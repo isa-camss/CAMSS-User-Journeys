@@ -7,10 +7,10 @@ ARG ENV_JUPYTER_ENABLE_LAB=no
 ARG FLASK_HOST_PORT=http://localhost:5000
 
 FROM $BASE_CONTAINER
-
+RUN echo "step 1"
 COPY ./camss-kd-jupyter-notebook-app/requirements.txt .
-
+RUN echo "step 2"
 RUN pip install --no-cache-dir -r ./requirements.txt
-
+RUN echo "step 3"
 # Exposes the default Jupyter Notebook port
 EXPOSE 8888
