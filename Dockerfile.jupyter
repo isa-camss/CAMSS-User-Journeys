@@ -15,4 +15,6 @@ RUN pip install --no-cache-dir -r ./requirements.txt
 # Exposes the default Jupyter Notebook port
 EXPOSE 8888
 
+# Copy and execute the whole flask app
+COPY . .
 CMD jupyter notebook --ip=0.0.0.0 --port=$PORT --allow-root --NotebookApp.token="$JUPYTER_TOKEN" --no-browser
