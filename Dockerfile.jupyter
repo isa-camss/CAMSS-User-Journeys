@@ -1,19 +1,22 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 ARG OWNER=jupyter
-ARG BASE_CONTAINER=$OWNER/base-notebook:python-3.8.5
-ARG JUPYTER_TOKEN=hi
+ARG BASE_CONTAINER=/base-notebook:python-3.8.5
+FROM $OWNER$BASE_CONTAINER
+ARG jupyter_port
+ARG jupyter_dir
 ARG ENV_JUPYTER_ENABLE_LAB=no
-FROM $BASE_CONTAINER
-ENV FLASK_HOST_PORT=http://worker:5000
+# ENV FLASK_HOST_PORT=http://camss-kd-flask.herokuapp.com/api-cellar-queries/v1/CELLAR/query
 
+ENV PORT=$jupyter_port
+ENV DIR=$jupyter_dir
 COPY ./camss-kd-jupyter-notebook-app/requirements.txt .
 USER root
 RUN pip install --no-cache-dir -r ./requirements.txt
 
 # Exposes the default Jupyter Notebook port
-EXPOSE 8888
+EXPOSE $PORT
 
 # Copy and execute the whole flask app
 COPY . .
-CMD jupyter notebook --ip=0.0.0.0 --port=$PORT --allow-root --NotebookApp.token="$JUPYTER_TOKEN" --no-browser
+CMD jupyter notebook --ip=0.0.0.0 --port=$PORT --allow-root --NotebookApp.token='' --no-browser --notebook-dir=$DIR

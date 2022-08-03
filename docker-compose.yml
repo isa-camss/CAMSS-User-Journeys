@@ -5,10 +5,13 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.jupyter
+      args:
+        - jupyter_port=${JUPYTER_PORT}
+        - jupyter_dir=${JUPYTER_DIR}
     container_name: camss-kd-jupyter-notebook
     image: camss-kd-jupyter-notebook
     ports:
-      - "8888:8888"
+      - "${JUPYTER_PORT}:${JUPYTER_PORT}"
     networks:
       - camss-net
     volumes:
@@ -16,17 +19,17 @@ services:
     restart: 
       always
     environment:
-      - JUPYTER_TOKEN=hi
-      - ENV_JUPYTER_ENABLE_LAB=no
-      - FLASK_HOST_PORT=http://camss-kd-flask:5000
+      - FLASK_HOST_PORT=${FLASK_HOST_PORT}
   flask-api:
     build: 
       context: .
       dockerfile: Dockerfile.flask
+      args:
+        - flask_port=${FLASK_PORT}
     container_name: camss-kd-flask
     image: camss-kd-flask
     ports:
-      - "5000:5000"
+      - "${FLASK_PORT}:${FLASK_PORT}"
     networks:
       - camss-net
     restart: 
