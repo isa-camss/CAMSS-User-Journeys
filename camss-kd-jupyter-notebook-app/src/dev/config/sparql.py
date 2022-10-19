@@ -25,8 +25,6 @@ QUERY_ALL_SPECIFICATIONS_ASSESSED = '''
         dct:title ?Assessment.
         ?relations dcat:landingPage ?AssessmentLink.
     } 
-    
-    LIMIT 1000
     '''
 
 QUERY_SPECIFICATIONS_ASSESSED_ASSOCIATED_TO_EIRA_ABBS = '''
@@ -46,7 +44,7 @@ QUERY_SPECIFICATIONS_ASSESSED_ASSOCIATED_TO_EIRA_ABBS = '''
     prefix elis: <http://data.europa.eu/2sa/elis#>
     prefix owl: <http://www.w3.org/2002/07/owl#>
 
-    select distinct ?Specification ?ABBs ?AssessmentLink where {
+    select distinct ?ABBs ?Specification ?AssessmentLink where {
 
     ?PrimaryTopic dct:relation ?ABBs.{
         
@@ -64,6 +62,4 @@ QUERY_SPECIFICATIONS_ASSESSED_ASSOCIATED_TO_EIRA_ABBS = '''
     FILTER( contains(STR(?ABBs), "http://data.europa.eu/dr8#") )
     }
     ORDER BY ?PrimaryTopic
-    
-    LIMIT 1000
     '''

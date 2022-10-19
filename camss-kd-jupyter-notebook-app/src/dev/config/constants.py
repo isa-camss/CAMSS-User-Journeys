@@ -13,7 +13,7 @@ END_POINT_NAME = 'query'
 
 # -------------------------------------------- DOCKER CONFIGURATION -------------------------------------------------
 
-FLASK_HOST_PORT = os.environ.get('FLASK_HOST_PORT') if os.environ.get('FLASK_HOST_PORT') else 'https://localhost:5000'
+FLASK_HOST_PORT = os.environ.get('FLASK_HOST_PORT') if os.environ.get('FLASK_HOST_PORT') else 'http://127.0.0.1:5000'
 URL_MICROSERVICE = f'{FLASK_HOST_PORT}/api-cellar-queries/v1/CELLAR/query'
 
 # ---------------------------------------------- CELLAR CONNECTION -------------------------------------------------
